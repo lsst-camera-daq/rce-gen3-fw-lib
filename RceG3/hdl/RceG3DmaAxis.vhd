@@ -54,15 +54,15 @@ entity RceG3DmaAxis is
       hpReadSlave     : in  AxiReadSlaveArray(3 downto 0);
       hpReadMaster    : out AxiReadMasterArray(3 downto 0);
       -- User memory access
-      userWriteSlave  : out AxiWriteSlaveType;
-      userWriteMaster : in  AxiWriteMasterType;
-      userReadSlave   : out AxiReadSlaveType;
-      userReadMaster  : in  AxiReadMasterType;
+      auxWriteSlave   : out AxiWriteSlaveType;
+      auxWriteMaster  : in  AxiWriteMasterType;
+      auxReadSlave    : out AxiReadSlaveType;
+      auxReadMaster   : in  AxiReadMasterType;
       -- Local AXI Lite Bus, 0x600n0000
       axilReadMaster  : in  AxiLiteReadMasterArray(DMA_AXIL_COUNT_C-1 downto 0);
-      axilReadSlave   : out AxiLiteReadSlaveArray(DMA_AXIL_COUNT_C-1 downto 0);
+      axilReadSlave   : out AxiLiteReadSlaveArray(DMA_AXIL_COUNT_C-1 downto 0) := (others => AXI_LITE_READ_SLAVE_EMPTY_DECERR_C);
       axilWriteMaster : in  AxiLiteWriteMasterArray(DMA_AXIL_COUNT_C-1 downto 0);
-      axilWriteSlave  : out AxiLiteWriteSlaveArray(DMA_AXIL_COUNT_C-1 downto 0);
+      axilWriteSlave  : out AxiLiteWriteSlaveArray(DMA_AXIL_COUNT_C-1 downto 0) := (others => AXI_LITE_WRITE_SLAVE_EMPTY_DECERR_C);
       -- Interrupts
       interrupt       : out slv(DMA_INT_COUNT_C-1 downto 0);
       -- External DMA Interfaces
@@ -99,11 +99,11 @@ begin
    intReadSlave(2)  <= acpReadSlave;
    acpReadMaster    <= intReadMaster(2);
 
-   -- HP 2 goes to user space
-   userWriteSlave   <= hpWriteSlave(2);
-   hpWriteMaster(2) <= userWriteMaster;
-   userReadSlave    <= hpReadSlave(2);
-   hpReadMaster(2)  <= userReadMaster;
+   -- HP 2 goes to aux space
+   auxWriteSlave    <= hpWriteSlave(2);
+   hpWriteMaster(2) <= auxWriteMaster;
+   auxReadSlave     <= hpReadSlave(2);
+   hpReadMaster(2)  <= auxReadMaster;
 
    -- HP for channel 3
    intWriteSlave(3) <= hpWriteSlave(3);
@@ -114,17 +114,6 @@ begin
    -- Unused Interrupts
    interrupt(DMA_INT_COUNT_C-1 downto 4) <= (others => '0');
 
-   -- Terminate Unused AXI-Lite Interfaces
-   U_AxiLiteEmpty : entity work.AxiLiteEmpty
-      generic map (
-         TPD_G => TPD_G)
-      port map (
-         axiClk         => axiDmaClk,
-         axiClkRst      => axiDmaRst,
-         axiReadMaster  => axilReadMaster(8),
-         axiReadSlave   => axilReadSlave(8),
-         axiWriteMaster => axilWriteMaster(8),
-         axiWriteSlave  => axilWriteSlave(8));
 
    ------------------------------------------
    -- DMA Channels
