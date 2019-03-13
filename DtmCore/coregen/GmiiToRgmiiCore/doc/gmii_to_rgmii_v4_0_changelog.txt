@@ -1,0 +1,162 @@
+2018.2:
+ * Version 4.0 (Rev. 6)
+ * No changes
+
+2018.1:
+ * Version 4.0 (Rev. 6)
+ * Bug Fix: Fix for sysntesis failure where core is generated in vivado with name gmii_to_rgmii.
+ * Bug Fix: Changed REFCLK_FREQUENCY of delay elements in ZUP devices to 374.953 MHz
+ * Bug Fix: Added synchronizers on gmii_rx_dv and gmii_rx_er to generate COL and CRS signals in gmii_clk domain.
+
+2017.4:
+ * Version 4.0 (Rev. 5)
+ * General: Adding support for automotive zynquplus devices
+
+2017.3:
+ * Version 4.0 (Rev. 4)
+ * No changes
+
+2017.2:
+ * Version 4.0 (Rev. 4)
+ * No changes
+
+2017.1:
+ * Version 4.0 (Rev. 4)
+ * Bug Fix: Fix for BUFR along with BUFG combination is used in the RX_CLK path
+ * Bug Fix: Added component name to constraint name
+ * Bug Fix: Constraint modification for master clock for gmii_tx_clk not being found for some designs
+
+2016.4:
+ * Version 4.0 (Rev. 3)
+ * No changes
+
+2016.3:
+ * Version 4.0 (Rev. 3)
+ * No changes
+
+2016.2:
+ * Version 4.0 (Rev. 3)
+ * No changes
+
+2016.1:
+ * Version 4.0 (Rev. 3)
+ * Updates to delay for zyncuplus devices
+ * Changes to HDL library management to support Vivado IP simulation library
+
+2015.4.2:
+ * Version 4.0 (Rev. 2)
+ * No changes
+
+2015.4.1:
+ * Version 4.0 (Rev. 2)
+ * No changes
+
+2015.4:
+ * Version 4.0 (Rev. 2)
+ * Support for zynquplus devices
+
+2015.3:
+ * Version 4.0 (Rev. 1)
+ * IP revision number added to HDL module, library, and include file names, to support designs with both locked and upgraded IP instances
+
+2015.2.1:
+ * Version 4.0
+ * No changes
+
+2015.2:
+ * Version 4.0
+ * No changes
+
+2015.1:
+ * Version 4.0
+ * Adding 90 deg phase shift option
+
+2014.4.1:
+ * Version 3.0 (Rev. 4)
+ * No changes
+
+2014.4:
+ * Version 3.0 (Rev. 4)
+ * Encrypted source files are concatenated together to reduce the number of files and to reduce simulator compile time
+
+2014.3:
+ * Version 3.0 (Rev. 3)
+ * Added IO Constraints
+
+2014.2:
+ * Version 3.0 (Rev. 2)
+ * Support for Defense and Automotive grade zynq devices.
+
+2014.1:
+ * Version 3.0 (Rev. 1)
+ * Added library path for vhdl for VCS support.
+
+2013.4:
+ * Version 3.0
+ * No changes
+
+2013.3:
+ * Version 3.0
+ * Added bus interface definitions.
+ * Changed data type of GUI option PHY Address to integer form binary.
+ * Added GUI option to provide 2ns skew on RGMII TXC.
+ * Added GUI option to include or exclude IDELAYCTRL instantiation.
+ * Added GUI option to include or exclude shareable logic resources in the core.
+ * Enhanced support for IP Integrator.
+ * Reduced warnings in synthesis and simulation.
+ * Updated clock synchronizers to improve Mean Time Between Failures (MTBF) for metastability.
+
+2013.2:
+ * Version 2.0
+ * No changes
+
+2013.1:
+ * Version 2.0
+ * Native Vivado Release
+ * There have been no functional or interface changes to this IP.  The version number has changed to support unique versioning in Vivado starting with 2013.1.
+
+(c) Copyright 2013 - 2018 Xilinx, Inc. All rights reserved.
+
+This file contains confidential and proprietary information
+of Xilinx, Inc. and is protected under U.S. and
+international copyright and other intellectual property
+laws.
+
+DISCLAIMER
+This disclaimer is not a license and does not grant any
+rights to the materials distributed herewith. Except as
+otherwise provided in a valid license issued to you by
+Xilinx, and to the maximum extent permitted by applicable
+law: (1) THESE MATERIALS ARE MADE AVAILABLE "AS IS" AND
+WITH ALL FAULTS, AND XILINX HEREBY DISCLAIMS ALL WARRANTIES
+AND CONDITIONS, EXPRESS, IMPLIED, OR STATUTORY, INCLUDING
+BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, NON-
+INFRINGEMENT, OR FITNESS FOR ANY PARTICULAR PURPOSE; and
+(2) Xilinx shall not be liable (whether in contract or tort,
+including negligence, or under any other theory of
+liability) for any loss or damage of any kind or nature
+related to, arising under or in connection with these
+materials, including for any direct, or any indirect,
+special, incidental, or consequential loss or damage
+(including loss of data, profits, goodwill, or any type of
+loss or damage suffered as a result of any action brought
+by a third party) even if such damage or loss was
+reasonably foreseeable or Xilinx had been advised of the
+possibility of the same.
+
+CRITICAL APPLICATIONS
+Xilinx products are not designed or intended to be fail-
+safe, or for use in any application requiring fail-safe
+performance, such as life-support or safety devices or
+systems, Class III medical devices, nuclear facilities,
+applications related to the deployment of airbags, or any
+other applications that could lead to death, personal
+injury, or severe property or environmental damage
+(individually and collectively, "Critical
+Applications"). Customer assumes the sole risk and
+liability of any use of Xilinx products in Critical
+Applications, subject only to applicable laws and
+regulations governing limitations on product liability.
+
+THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
+PART OF THIS FILE AT ALL TIMES.
