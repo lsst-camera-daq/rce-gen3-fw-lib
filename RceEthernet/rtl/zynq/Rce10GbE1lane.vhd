@@ -2,7 +2,7 @@
 -- File       : Rce10GbE1lane.vhd
 -- Company    : SLAC National Accelerator Laboratory
 -- Created    : 2018-06-27
--- Last update: 2018-08-11
+-- Last update: 2019-09-26
 -------------------------------------------------------------------------------
 -- Description: 10 GigE (1 lane)
 -------------------------------------------------------------------------------
@@ -274,8 +274,8 @@ begin
          gt0_rxlpmen          => '0',
          gt0_dmonitorout      => open,
          gt0_rxrate           => (others => '0'),
-         gt0_txprecursor      => "01111",
-         gt0_txpostcursor     => "01111",
+         gt0_txprecursor      => "01100",
+         gt0_txpostcursor     => "01100",
          gt0_txdiffctrl       => "1111");
 
    -------------------------------------
