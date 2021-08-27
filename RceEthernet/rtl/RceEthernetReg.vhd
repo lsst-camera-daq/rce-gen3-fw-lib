@@ -64,13 +64,14 @@ architecture structure of RceEthernetReg is
 
    constant STATUS_SIZE_C  : positive                      := 17;
    constant ROLL_OVER_C    : slv(STATUS_SIZE_C-1 downto 0) := toSlv(3, STATUS_SIZE_C);
-   constant PAUSE_THRESH_C : slv(15 downto 0) := toSlv(9000/16, 16); -- 9000B jumbo frame in cache
+   constant PAUSE_THRESH_C : slv(15 downto 0) := toSlv(9000/16, 16); -- 1500B frame in cache
 
    type RegType is record
       countReset     : sl;
       phyReset       : sl;
       config         : slv(6 downto 0);
       pauseTime      : slv(15 downto 0);
+      pauseThresh    : slv(15 downto 0);
       macAddress     : slv(47 downto 0);
       ipAddr         : slv(31 downto 0);
       rxShift        : slv(3 downto 0);
@@ -90,6 +91,7 @@ architecture structure of RceEthernetReg is
       phyReset       => '1',
       config         => (others => '0'),
       pauseTime      => (others => '1'),
+      pauseThresh    => PAUSE_THRESH_C,
       macAddress     => (others => '0'),
       ipAddr         => (others => '0'),
       rxShift        => (others => '0'),
@@ -168,6 +170,7 @@ begin
       axiSlaveRegister(axilEp, x"01C", 0, v.ipAddr);
       axiSlaveRegisterR(axilEp, x"020", 0, phyStatus);
       axiSlaveRegisterR(axilEp, x"024", 0, phyDebug);
+      axiSlaveRegister(axilEp, x"028", 0, v.pauseThresh);
       -- 0x0034:0x028 are unmapped
       axiSlaveRegister(axilEp, x"038", 0, v.txShift);
       axiSlaveRegister(axilEp, x"038", 4, v.rxShift);
@@ -221,7 +224,6 @@ begin
    end process;
 
    macConfig.pauseEnable <= '1';
-   macConfig.pauseThresh <= PAUSE_THRESH_C;
 
    U_SyncMAC : entity surf.SynchronizerVector
       generic map (
@@ -261,6 +263,19 @@ begin
          dataIn  => r.pauseTime,
          -- Output Data
          dataOut => macConfig.pauseTime);
+
+   U_SyncThresh : entity surf.SynchronizerVector
+      generic map (
+         TPD_G    => TPD_G,
+         STAGES_G => 2,
+         WIDTH_G  => 16)
+      port map (
+         clk     => ethClk,
+         rst     => ethRst,
+         -- Input Data
+         dataIn  => r.pauseThresh,
+         -- Output Data
+         dataOut => macConfig.pauseThresh);
 
    U_SyncConfig : entity surf.SynchronizerVector
       generic map (
