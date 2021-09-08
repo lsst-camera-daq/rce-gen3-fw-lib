@@ -368,7 +368,7 @@ begin
             RCE_DMA_MODE_G     => RCE_DMA_MODE_G,
             ETH_TYPE_G         => ETH_TYPE_G,
             MEMORY_TYPE_G      => MEMORY_TYPE_C,
-            EN_JUMBO_G         => true,
+            EN_JUMBO_G         => false,
             -- User ETH Configurations
             UDP_SERVER_EN_G    => UDP_SERVER_EN_G,
             UDP_SERVER_SIZE_G  => UDP_SERVER_SIZE_G,
