@@ -161,6 +161,15 @@ architecture structure of PpiIbPayload is
    -- attribute dont_touch      : string;
    -- attribute dont_touch of r : signal is "true";   
 
+   attribute MARK_DEBUG : string;
+   attribute MARK_DEBUG of wrAxisMaster  : signal is "true";
+   attribute MARK_DEBUG of wrAxisSlave   : signal is "true";
+   attribute MARK_DEBUG of wrReq         : signal is "true";
+   attribute MARK_DEBUG of wrAck         : signal is "true";
+   attribute MARK_DEBUG of intWriteMaster: signal is "true";
+   attribute MARK_DEBUG of intWriteSlave : signal is "true";
+   attribute MARK_DEBUG of intWriteCtrl  : signal is "true";
+   
 begin
 
    -- Sync

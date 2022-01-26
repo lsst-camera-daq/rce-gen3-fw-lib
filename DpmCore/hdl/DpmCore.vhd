@@ -187,13 +187,21 @@ begin
    sysClk200Rst <= axiDmaReset;
 
    -- DMA Interfaces
-   idmaClk(2 downto 0)      <= dmaClk(2 downto 0);
-   idmaRst(2 downto 0)      <= dmaClkRst(2 downto 0);
-   dmaState(2 downto 0)     <= idmaState(2 downto 0);
-   dmaObMaster(2 downto 0)  <= idmaObMaster(2 downto 0);
-   idmaObSlave(2 downto 0)  <= dmaObSlave(2 downto 0);
-   idmaIbMaster(2 downto 0) <= dmaIbMaster(2 downto 0);
-   dmaIbSlave(2 downto 0)   <= idmaIbSlave(2 downto 0);
+--   idmaClk(2 downto 0)      <= dmaClk(2 downto 0);
+--   idmaRst(2 downto 0)      <= dmaClkRst(2 downto 0);
+--   dmaState(2 downto 0)     <= idmaState(2 downto 0);
+--   dmaObMaster(2 downto 0)  <= idmaObMaster(2 downto 0);
+--   idmaObSlave(2 downto 0)  <= dmaObSlave(2 downto 0);
+--   idmaIbMaster(2 downto 0) <= dmaIbMaster(2 downto 0);
+--   dmaIbSlave(2 downto 0)   <= idmaIbSlave(2 downto 0);
+
+   idmaClk(0)      <= dmaClk(0);
+   idmaRst(0)      <= dmaClkRst(0);
+   dmaState(0)     <= idmaState(0);
+   dmaObMaster(0)  <= idmaObMaster(0);
+   idmaObSlave(0)  <= dmaObSlave(0);
+   idmaIbMaster(0) <= dmaIbMaster(0);
+   dmaIbSlave(0)   <= idmaIbSlave(0);
 
    --------------------------------------------------
    -- RCE Core
